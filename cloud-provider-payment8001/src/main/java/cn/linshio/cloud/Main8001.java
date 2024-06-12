@@ -18,6 +18,7 @@ public class Main8001 {
     public static void main(String[] args)
     {
         SpringApplication.run(Main8001.class,args);
-        //docker run -d -p 8500:8500 --restart=always --name consul-8500 consul:latest agent -server -bootstrap -ui -node=consul_node_01 -client='0.0.0.0'
+        //docker run -d -p 8500:8500 --restart=always --name consul-8500 consul:1.6.1 agent -server -bootstrap -ui -node=consul_node_01 -client='0.0.0.0'
+        //docker run -id --name=consul -p 8300:8300 -p 8301:8301 -p 8302:8302 -p 8500:8500 -p 8600:8600 -v consul-data:/consul/data consul:latest agent -server -ui -node=n1 -bootstrap-expect=1 -client=0.0.0.0 -advertise=60.204.128.243
     }
 }
