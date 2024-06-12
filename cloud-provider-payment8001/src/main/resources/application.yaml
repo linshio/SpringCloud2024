@@ -5,6 +5,14 @@ server:
 spring:
   application:
     name: cloud-payment-service
+    ####Spring Cloud Consul for Service Discovery
+  cloud:
+    consul:
+      host: linshio.cn
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+        prefer-ip-address: true
 
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -12,6 +20,8 @@ spring:
     url: jdbc:mysql://linshio.cn:3307/db2024?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true
     username: root
     password: LingXi666
+
+
 
 # ========================mybatis===================
 mybatis:
