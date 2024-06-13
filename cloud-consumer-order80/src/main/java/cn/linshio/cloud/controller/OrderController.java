@@ -19,7 +19,9 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/consumer")
 public class OrderController {
 
-    public static final String PAYMENT_SRV_URL = "http://192.168.1.87:8001";
+//    public static final String PAYMENT_SRV_URL = "http://192.168.1.87:8001";
+    //服务注册中心上的微服务名称
+    public static final String PAYMENT_SRV_URL = "http://cloud-payment-service";
 
     @Resource
     private RestTemplate restTemplate;
