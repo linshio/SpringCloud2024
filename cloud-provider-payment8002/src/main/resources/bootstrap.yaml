@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: cloud-payment-service
+    ####Spring Cloud Consul for Service Discovery
+  cloud:
+    consul:
+      host: linshio.cn
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+        # 发送心跳包的配置 坑
+        heartbeat:
+          enabled: true
+        register: true
+        prefer-ip-address: true
+      config:
+        profile-separator: '-' # default value is ","，we update '-'
+        format: YAML
+        # consul 给定配置生效时间
+        watch:
+          wait-time: 1
+
+  # config/cloud-payment-service/data
+  #       /cloud-payment-service-dev/data
+  #       /cloud-payment-service-prod/data
+
