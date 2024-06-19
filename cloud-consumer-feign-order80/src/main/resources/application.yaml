@@ -1,0 +1,29 @@
+server:
+  port: 80
+spring:
+  application:
+    name: cloud-consumer-openfeign-order
+  ####Spring Cloud Consul for Service Discovery
+  cloud:
+    consul:
+      host: linshio.cn
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+        # 发送心跳包的配置 坑
+        heartbeat:
+          enabled: true
+        register: true
+        prefer-ip-address: true
+
+    openfeign:
+      client:
+        config:
+          #default 为全局配置服务配置超时时间
+#          default:
+          #服务名 为只为这个单独的服务配置超时时间
+          cloud-payment-service:
+            #连接超时时间
+            connectTimeout: 5000
+            #读取超时时间
+            readTimeout: 5000

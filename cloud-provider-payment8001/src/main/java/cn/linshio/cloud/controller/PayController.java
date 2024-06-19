@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author linshio
@@ -69,6 +70,12 @@ public class PayController {
         log.info("查询单个订单参数值为==>{}",id);
         if (id == -4) {
             throw new RuntimeException("id不能为负数");
+        }
+        //模拟超时时间
+        try {
+            TimeUnit.SECONDS.sleep(6);
+        }catch (Exception e){
+            e.printStackTrace();
         }
         return ResultData.success(payService.getById(id));
     }

@@ -33,7 +33,7 @@ public class OrderController {
 
     @Resource
     private DiscoveryClient discoveryClient;
-    @GetMapping("/consumer/discovery")
+    @GetMapping("/discovery")
     public String discovery()
     {
         List<String> services = discoveryClient.getServices();
