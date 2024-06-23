@@ -34,4 +34,21 @@ public interface PayFeignApi {
     //测试服务熔断与降级 Resilience4j CircuitBreaker 的例子
     @GetMapping("/pay/circuit/{id}")
     ResultData<String> myCircuit(@PathVariable("id") Integer id);
+
+    /**
+     * 测试服务隔离 -限制并发数
+     * Resilience4j Bulkhead 的例子
+     * @param id
+     * @return
+     */
+    @GetMapping(value = "/pay/bulkhead/{id}")
+    String myBulkhead(@PathVariable("id") Integer id);
+
+    /**
+     * Resilience4j Ratelimit 的例子
+     * @param id
+     * @return
+     */
+    @GetMapping(value = "/pay/ratelimit/{id}")
+    String myRatelimit(@PathVariable("id") Integer id);
 }
