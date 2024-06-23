@@ -30,13 +30,13 @@ public class OrderController {
     //负载均衡调用测试
     @GetMapping("/pay/testConfiguration")
     public ResultData<String> getLinshioInfo(){
-        return payFeignApi.testLoadBalance();
+        return payFeignApi.testLoadBalanceServes();
     }
 
     @PostMapping("/add")
     public ResultData<String> addOrder(@RequestBody PayDTO payDTO){
         log.info("添加订单参数值为==>{}",payDTO);
-        return payFeignApi.addPay(payDTO);
+        return payFeignApi.addPayDTO(payDTO);
     }
 
     @GetMapping("/get/{id}")
@@ -47,7 +47,7 @@ public class OrderController {
         try
         {
             System.out.println("调用开始-----:"+ DateUtil.now());
-            resultData = payFeignApi.getPayInfo(id);
+            resultData = payFeignApi.getPayInfoMessage(id);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("调用结束-----:"+DateUtil.now());

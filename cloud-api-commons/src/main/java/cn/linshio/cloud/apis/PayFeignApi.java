@@ -21,13 +21,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface PayFeignApi {
     //新增一条流水
     @PostMapping("/pay/add")
-    ResultData<String> addPay(@RequestBody PayDTO payDTO);
+    ResultData<String> addPayDTO(@RequestBody PayDTO payDTO);
 
     //根据id查询一条流水
     @GetMapping("/pay/get/{id}")
-    ResultData<PayDTO> getPayInfo(@PathVariable("id") Integer id);
+    ResultData<PayDTO> getPayInfoMessage(@PathVariable("id") Integer id);
 
     //测试负载均衡
     @GetMapping("/pay/testConfiguration")
-    ResultData<String> testLoadBalance();
+    ResultData<String> testLoadBalanceServes();
+
+    //测试服务熔断与降级 Resilience4j CircuitBreaker 的例子
+    @GetMapping("/pay/circuit/{id}")
+    ResultData<String> myCircuit(@PathVariable("id") Integer id);
 }
