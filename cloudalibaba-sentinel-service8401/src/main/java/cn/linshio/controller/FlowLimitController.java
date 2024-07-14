@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
  * ClassName: FlowLimitController
  * Package: cn.linshio.controller
  * Description:
- *
+ * 流控
  * @Author Linshio
  * @Create 2024/7/13 15:43
  */
@@ -82,5 +82,17 @@ public class FlowLimitController {
         System.out.println("----测试:新增熔断规则-异常比例 ");
         int age = 10/0;
         return "------testG,新增熔断规则-异常比例 ";
+    }
+
+    /**
+     * 新增熔断规则-异常数
+     * @return
+     */
+    @GetMapping("/testH")
+    public String testH()
+    {
+        System.out.println("----测试:新增熔断规则-异常数 ");
+        int age = 10/0;
+        return "------testH,新增熔断规则-异常数 ";
     }
 }
