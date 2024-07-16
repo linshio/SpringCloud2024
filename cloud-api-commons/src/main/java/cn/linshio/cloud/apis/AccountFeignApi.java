@@ -22,5 +22,5 @@ public interface AccountFeignApi {
      * @return ResultData
      */
     @PostMapping("/account/decrease")
-    ResultData decrease(@RequestParam("userId") Long userId, @RequestParam("money") Long money);
+    ResultData<String> decrease(@RequestParam("userId") Long userId, @RequestParam("money") Long money);
 }

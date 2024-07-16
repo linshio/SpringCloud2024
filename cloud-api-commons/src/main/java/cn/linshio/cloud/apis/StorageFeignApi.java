@@ -22,5 +22,5 @@ public interface StorageFeignApi {
      * @return ResultData
      */
     @PostMapping(value = "/storage/decrease")
-    ResultData decrease(@RequestParam("productId") Long productId, @RequestParam("count") Integer count);
+    ResultData<String> decrease(@RequestParam("productId") Long productId, @RequestParam("count") Integer count);
 }
