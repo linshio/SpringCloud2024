@@ -6,6 +6,7 @@ import cn.linshio.cloud.entities.Order;
 import cn.linshio.cloud.mapper.OrderMapper;
 import cn.linshio.cloud.service.OrderService;
 import io.seata.core.context.RootContext;
+import io.seata.spring.annotation.GlobalTransactional;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.weaver.ast.Or;
@@ -31,6 +32,7 @@ public class OrderServiceImpl implements OrderService {
     @Resource//订单微服务通过OpenFeign去调用库存微服务
     private StorageFeignApi storageFeignApi;
     @Override
+    @GlobalTransactional(name = "zzyy-create-order",rollbackFor = Exception.class) //AT
     public void create(Order order) {
         //xid检查
         String xid = RootContext.getXID();
